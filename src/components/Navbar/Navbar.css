@@ -1,0 +1,202 @@
+    /* ===========================
+    NAVBAR
+    =========================== */
+
+    .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.35s ease;
+    background: transparent;
+    }
+
+    .navbar.sticky {
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
+
+    .nav-container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    /* ===========================
+    LOGO
+    =========================== */
+
+    .logo {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-decoration: none;
+    }
+
+    .logo span {
+    color: #3b82f6;
+    }
+
+    /* ===========================
+    LINKS
+    =========================== */
+
+    .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    align-items: center;
+    }
+
+    .nav-links li {
+    list-style: none;
+    }
+
+    .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+    position: relative;
+    }
+
+    .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: .35s;
+    }
+
+    .nav-links a:hover::after,
+    .active-link::after {
+    width: 100%;
+    }
+
+    .nav-links a:hover,
+    .active-link {
+    color: #3b82f6;
+    }
+
+    /* ===========================
+    RESUME BUTTON
+    =========================== */
+
+    .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg,#3b82f6,#8b5cf6);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: .35s;
+    text-decoration: none;
+    }
+
+    .resume-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(59,130,246,.35);
+    }
+
+    .mobile-btn {
+    display: none;
+    }
+
+    /* ===========================
+    MENU ICON
+    =========================== */
+
+    .menu-icon {
+    display: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    }
+
+    /* ===========================
+    MOBILE
+    =========================== */
+
+    @media(max-width:900px){
+
+    .nav-container{
+    padding:18px 6%;
+    }
+
+    .menu-icon{
+    display:block;
+    z-index:1002;
+    }
+
+    .desktop-btn{
+    display:none;
+    }
+
+    .mobile-btn{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+    }
+
+    .nav-links{
+
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:280px;
+    height:100vh;
+
+    background:#111827;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    transition:.4s;
+
+    box-shadow:-10px 0 30px rgba(0,0,0,.4);
+
+    }
+
+    .nav-links.active{
+    right:0;
+    }
+
+    .nav-links a{
+    font-size:1.15rem;
+    }
+
+    }
+
+    /* ===========================
+    SMALL MOBILE
+    =========================== */
+
+    @media(max-width:500px){
+
+    .logo{
+    font-size:1.5rem;
+    }
+
+    .resume-btn{
+    padding:11px 18px;
+    font-size:.95rem;
+    }
+
+    }

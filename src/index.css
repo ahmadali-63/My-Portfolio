@@ -1,0 +1,26 @@
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    }
+
+    body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    a {
+    color: inherit;
+    }
+
+    button,
+    input,
+    textarea {
+    font-family: inherit;
+    }
