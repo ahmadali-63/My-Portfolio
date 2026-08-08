@@ -51,14 +51,16 @@ const Skills = () => {
         <div className="skills-header">
           <div className="skills-header-top">
             <h2 className="skills-title">
-              <span>⚡</span> My Skills
+               My Skills
             </h2>
             <div className="skills-username">
-              <span>@</span>ahmad.dev
             </div>
           </div>
+          <h3 className="skills-subtitle1">
+            Technologies i work with
+          </h3>
           <p className="skills-subtitle">
-            Technologies I work with · constantly evolving
+            I build modern, responsive web applications using React.js, JavaScript, Node.js, Express.js, MongoDB, and SQL, with a strong foundation in HTML, CSS, Java, and Python. I’m continuously learning and expanding my skills across the MERN stack and full-stack development. 
           </p>
         </div>
 

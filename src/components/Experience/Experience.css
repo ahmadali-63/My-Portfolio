@@ -68,6 +68,7 @@
 }
 
 .experience-card > span {
+  padding: 16px;
   display: inline-block;
   color: var(--accent-primary);
   font-size: 0.85rem;

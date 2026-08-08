@@ -57,8 +57,9 @@ textarea {
 }
 
 .section-kicker {
+      padding-bottom: 16px;
+    padding-top: 16px;
   display: inline-flex;
-  margin-bottom: 14px;
   color: var(--accent-primary);
   font-size: 0.9rem;
   font-weight: 800;

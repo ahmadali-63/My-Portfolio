@@ -21,6 +21,7 @@
 }
 
 .section-kicker {
+  
   display: inline-flex;
   margin-bottom: 14px;
   color: var(--accent-primary, #A5CBD6);

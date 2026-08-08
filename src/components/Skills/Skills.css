@@ -202,6 +202,14 @@
   .skills-title {
     font-size: 24px;
   }
+  .skills-subtitle1{
+    font-weight: 80000;
+    margin-bottom:10px;
+    font:bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+    font-size: 20px;
+  }
 
   .skills-username {
     font-size: 13px;
