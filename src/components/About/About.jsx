@@ -46,7 +46,7 @@ const About = () => {
         initial={{ opacity: 0, y: 35 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="about-heading">
           <span className="section-kicker">About Me</span>
@@ -62,7 +62,7 @@ const About = () => {
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.45 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <p>
               Hi, I'm <strong>Ahmad Ali</strong>, a Computer Science
@@ -98,16 +98,23 @@ const About = () => {
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.45, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="timeline-line" />
             {timeline.map((item, index) => (
-              <div className="timeline-item" key={item}>
+              <motion.div
+                className="timeline-item"
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+              >
                 <span className="timeline-dot">
                   {index === 0 ? <FaGraduationCap /> : <FaCode />}
                 </span>
                 <p>{item}</p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -117,11 +124,11 @@ const About = () => {
             <motion.article
               className="about-card"
               key={item.title}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              whileHover={{ y: -8, scale: 1.03 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.35, delay: index * 0.06 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
             >
               <div className="about-card-icon">{item.icon}</div>
               <h3>{item.title}</h3>

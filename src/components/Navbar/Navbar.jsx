@@ -1,101 +1,114 @@
-    import { useState, useEffect } from "react";
-    import "./Navbar.css";
+import { useState, useEffect } from "react";
+import "./Navbar.css";
 
-    import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
+const Navbar = ({ activeSection, onNavigate }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
 
-    const Navbar = () => {
-    const [menu, setMenu] = useState(false);
-    const [active, setActive] = useState("home");
-    const [sticky, setSticky] = useState(false);
+  const links = [
+    { id: "home", title: "Home" },
+    { id: "about", title: "About" },
+    { id: "education", title: "Education" },
+    { id: "skills", title: "Skills" },
+    { id: "experience", title: "Experience" },
+    { id: "projects", title: "Projects" },
+    { id: "contact", title: "Contact" },
+  ];
 
-    const links = [
-        { id: "home", title: "Home" },
-        { id: "about", title: "About" },
-        { id: "education", title: "Education" },
-        { id: "skills", title: "Skills" },
-        { id: "experience", title: "Experience" },
-        { id: "projects", title: "Projects" },
-        { id: "contact", title: "Contact" },
-    ];
-
-    useEffect(() => {
-        const handleScroll = () => {
-        setSticky(window.scrollY > 50);
-
-        const sections = document.querySelectorAll("section");
-
-        sections.forEach((section) => {
-            const top = window.scrollY;
-            const offset = section.offsetTop - 120;
-            const height = section.offsetHeight;
-            const id = section.getAttribute("id");
-
-            if (top >= offset && top < offset + height) {
-            setActive(id);
-            }
-        });
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const handleClick = () => {
-        setMenu(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 50);
     };
 
-    return (
-        <nav className={sticky ? "navbar sticky" : "navbar"}>
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  const handleLinkClick = (id) => {
+    setMenuOpen(false);
+    onNavigate(id);
+  };
+
+  return (
+    <>
+      <nav className={`navbar ${sticky ? "sticky" : ""}`}>
         <div className="nav-container">
+          <button
+            type="button"
+            className="brand"
+            onClick={() => handleLinkClick("home")}
+          >
+            <span className="brand-symbol">&lt;</span>
+            <span className="brand-text">ahmad.dev</span>
+            <span className="brand-symbol"> /&gt;</span>
+          </button>
 
-            <a href="#home" className="logo">
-            Ahmad<span>.</span>
-            </a>
+          <button
+            type="button"
+            className={`hamburger ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
 
-            <ul className={menu ? "nav-links active" : "nav-links"}>
-            {links.map((item) => (
-                <li key={item.id}>
-                <a
-                    href={`#${item.id}`}
-                    onClick={handleClick}
-                    className={active === item.id ? "active-link" : ""}
+          <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
+            {links.map((link) => (
+              <li key={link.id}>
+                <button
+                  type="button"
+                  className={`snake-border ${activeSection === link.id ? "active" : ""}`}
+                  onClick={() => handleLinkClick(link.id)}
                 >
-                    {item.title}
-                </a>
-                </li>
+                  {link.title}
+                </button>
+              </li>
             ))}
 
-            <li>
-                <a
-                href="public\Resume.pdf"
-                className="resume-btn mobile-btn"
+            <li className="nav-resume">
+              <a
+                href="/Resume.pdf"
                 download
-                >
-                <FaDownload />
+                className="snake-border resume-link"
+                onClick={() => setMenuOpen(false)}
+              >
                 Resume
-                </a>
+              </a>
             </li>
-            </ul>
-
-            <a
-            href="public\Resume.pdf"
-            download
-            className="resume-btn desktop-btn"
-            >
-            <FaDownload />
-            Resume
-            </a>
-
-            <div
-            className="menu-icon"
-            onClick={() => setMenu(!menu)}
-            >
-            {menu ? <FaTimes /> : <FaBars />}
-            </div>
+          </ul>
         </div>
-        </nav>
-    );
-    };
+      </nav>
 
-    export default Navbar;
+      <button
+        type="button"
+        className={`nav-overlay ${menuOpen ? "show" : ""}`}
+        onClick={() => setMenuOpen(false)}
+        aria-label="Close navigation menu"
+        tabIndex={menuOpen ? 0 : -1}
+      />
+    </>
+  );
+};
+
+export default Navbar;

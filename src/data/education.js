@@ -8,14 +8,14 @@ const education = [
   },
   {
     degree: "FSc (Pre-Engineering)",
-    institution: "Muslim College, Multan",
+    institution: "Muslim Groups of Schools & Colleges, Multan",
     period: "2020 – 2022",
     details:
       "Completed Higher Secondary School Certificate with an A+ Grade, developing a solid foundation in Mathematics, Physics, and Computer Science.",
   },
   {
     degree: "Matriculation (Science)",
-    institution: "The Educators School",
+    institution: "Suffah School System, Multan",
     period: "2018 – 2020",
     details:
       "Completed Secondary School Certificate with an A+ Grade while strengthening analytical thinking and problem-solving skills.",
